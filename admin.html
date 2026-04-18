@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Panel — LUMINAE Events</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body class="admin-body">
+
+  <!-- ADMIN NAVBAR -->
+  <nav class="admin-nav">
+    <div class="admin-nav-left">
+      <span class="brand-icon">✦</span>
+      <span class="admin-brand">LUMINAE <span class="admin-tag">ADMIN</span></span>
+    </div>
+    <div class="admin-nav-right">
+      <a href="index.html" class="admin-back-btn">← Back to Site</a>
+    </div>
+  </nav>
+
+  <div class="admin-wrapper">
+
+    <!-- SIDEBAR -->
+    <aside class="admin-sidebar">
+      <div class="sidebar-menu">
+        <div class="sidebar-item active" data-section="registrations">
+          <span class="sidebar-icon">📋</span>
+          <span>Registrations</span>
+        </div>
+        <div class="sidebar-item" onclick="location.href='index.html'">
+          <span class="sidebar-icon">🏠</span>
+          <span>Homepage</span>
+        </div>
+        <div class="sidebar-item" onclick="location.href='events.html'">
+          <span class="sidebar-icon">📅</span>
+          <span>Events</span>
+        </div>
+        <div class="sidebar-item" onclick="location.href='register.html'">
+          <span class="sidebar-icon">✏️</span>
+          <span>Register Form</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="admin-main">
+
+      <!-- STATS CARDS -->
+      <div class="admin-stats" id="adminStats">
+        <div class="admin-stat-card">
+          <div class="asc-icon">📋</div>
+          <div class="asc-info">
+            <div class="asc-num" id="statTotal">—</div>
+            <div class="asc-label">Total Registrations</div>
+          </div>
+        </div>
+        <div class="admin-stat-card">
+          <div class="asc-icon">⏳</div>
+          <div class="asc-info">
+            <div class="asc-num" id="statPending">—</div>
+            <div class="asc-label">Pending</div>
+          </div>
+        </div>
+        <div class="admin-stat-card">
+          <div class="asc-icon">✅</div>
+          <div class="asc-info">
+            <div class="asc-num" id="statConfirmed">—</div>
+            <div class="asc-label">Confirmed</div>
+          </div>
+        </div>
+        <div class="admin-stat-card">
+          <div class="asc-icon">🏙️</div>
+          <div class="asc-info">
+            <div class="asc-num" id="statCities">—</div>
+            <div class="asc-label">Unique Cities</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TABLE HEADER -->
+      <div class="admin-table-header">
+        <div class="table-title-row">
+          <h2 class="admin-section-title">All Registrations</h2>
+          <div class="table-actions">
+            <!-- Search -->
+            <div class="search-wrap">
+              <span class="search-icon">🔍</span>
+              <input type="text" id="searchInput" placeholder="Search name, email, city..." class="admin-search"/>
+            </div>
+            <!-- Filter -->
+            <select id="filterStatus" class="admin-filter-select">
+              <option value="all">All Status</option>
+              <option value="pending">Pending</option>
+              <option value="confirmed">Confirmed</option>
+              <option value="cancelled">Cancelled</option>
+            </select>
+            <!-- Refresh -->
+            <button class="admin-refresh-btn" onclick="loadRegistrations()">↺ Refresh</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- LOADING STATE -->
+      <div class="admin-loading" id="adminLoading">
+        <div class="admin-spinner"></div>
+        <p>Loading registrations...</p>
+      </div>
+
+      <!-- ERROR STATE -->
+      <div class="admin-error" id="adminError" style="display:none;">
+        <div class="error-icon">⚠️</div>
+        <h3>Could not connect to database</h3>
+        <p>Make sure XAMPP is running and the database is set up.</p>
+        <p style="margin-top:0.5rem; font-size:0.8rem; color:var(--text-3);">Showing demo data below for preview.</p>
+        <button onclick="loadDemoData()" class="admin-refresh-btn" style="margin-top:1rem;">Load Demo Data</button>
+      </div>
+
+      <!-- TABLE -->
+      <div class="admin-table-wrap" id="tableWrap" style="display:none;">
+        <table class="admin-table" id="registrationsTable">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Event Type</th>
+              <th>Event Date</th>
+              <th>Attendees</th>
+              <th>City</th>
+              <th>Status</th>
+              <th>Registered On</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody">
+            <!-- Rows injected by JS -->
+          </tbody>
+        </table>
+
+        <!-- EMPTY STATE -->
+        <div class="table-empty" id="tableEmpty" style="display:none;">
+          <div style="font-size:2.5rem; margin-bottom:1rem;">📭</div>
+          <p>No registrations found.</p>
+        </div>
+
+        <!-- PAGINATION -->
+        <div class="admin-pagination" id="pagination"></div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- DELETE CONFIRMATION MODAL -->
+  <div class="modal-overlay" id="deleteModal" style="display:none;">
+    <div class="modal-box">
+      <div class="modal-icon">🗑️</div>
+      <h3>Delete Registration?</h3>
+      <p>Are you sure you want to delete this registration? This action <strong>cannot be undone</strong>.</p>
+      <div class="modal-actions">
+        <button class="modal-cancel" onclick="closeDeleteModal()">Cancel</button>
+        <button class="modal-confirm" id="confirmDeleteBtn">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIEW DETAIL MODAL -->
+  <div class="modal-overlay" id="viewModal" style="display:none;">
+    <div class="modal-box modal-large">
+      <div class="modal-close" onclick="closeViewModal()">✕</div>
+      <h3 class="modal-title">Registration Details</h3>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div class="toast" id="toast"></div>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Register — LUMINAE Events</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursorFollower"></div>
+
+  <nav class="navbar" id="navbar">
+    <div class="nav-brand">
+      <span class="brand-icon">✦</span>
+      <span class="brand-name">LUMINAE</span>
+      <span class="brand-sub">EVENTS</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="events.html" class="nav-link">Events</a></li>
+      <li><a href="register.html" class="nav-link active">Register</a></li>
+      <li><a href="index.html#about" class="nav-link">About</a></li>
+      <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+    </ul>
+    <a href="register.html" class="nav-cta">Book An Event</a>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero short-hero">
+    <div class="page-hero-bg">
+      <div class="hero-orb orb-1"></div>
+      <div class="hero-orb orb-2"></div>
+    </div>
+    <div class="page-hero-content">
+      <p class="section-eyebrow reveal-up">Join Us</p>
+      <h1 class="page-hero-title reveal-up delay-1">Register for an <em>Event</em></h1>
+      <p class="page-hero-desc reveal-up delay-2">Fill in your details and our team will reach out within 24 hours to confirm your registration.</p>
+    </div>
+  </section>
+
+  <!-- REGISTRATION SECTION -->
+  <section class="register-section section">
+    <div class="container register-container">
+
+      <!-- SIDEBAR INFO -->
+      <div class="register-sidebar">
+        <div class="sidebar-card">
+          <h3>Why Register With Us?</h3>
+          <div class="sidebar-benefits">
+            <div class="benefit-item">
+              <div class="benefit-icon">⚡</div>
+              <div>
+                <strong>Quick Response</strong>
+                <p>Our team responds within 24 hours</p>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <div class="benefit-icon">🎯</div>
+              <div>
+                <strong>Customized Solutions</strong>
+                <p>Tailored packages for every budget</p>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <div class="benefit-icon">🔒</div>
+              <div>
+                <strong>Data Security</strong>
+                <p>Your information is 100% secure</p>
+              </div>
+            </div>
+            <div class="benefit-item">
+              <div class="benefit-icon">🌟</div>
+              <div>
+                <strong>Premium Support</strong>
+                <p>Dedicated event manager assigned</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="sidebar-stats">
+          <div class="sidebar-stat">
+            <div class="s-num">500+</div>
+            <div class="s-label">Events Organized</div>
+          </div>
+          <div class="sidebar-stat">
+            <div class="s-num">4.9★</div>
+            <div class="s-label">Client Rating</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FORM -->
+      <div class="register-form-wrap">
+        <div class="form-header">
+          <h2>Event Registration Form</h2>
+          <p>All fields marked with <span class="req-star">*</span> are required.</p>
+        </div>
+
+        <!-- Success Message -->
+        <div class="form-success" id="formSuccess" style="display:none;">
+          <div class="success-icon">✓</div>
+          <h3>Registration Successful!</h3>
+          <p>Thank you for registering. Our team will contact you within 24 hours.</p>
+          <a href="events.html" class="btn-primary" style="margin-top:1.5rem;">View More Events <span class="btn-arrow">→</span></a>
+        </div>
+
+        <form class="register-form" id="registerForm" action="php/register.php" method="POST" novalidate>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fullName">Full Name <span class="req-star">*</span></label>
+              <div class="input-wrap">
+                <input type="text" id="fullName" name="fullName" placeholder="John Doe" autocomplete="off"/>
+                <div class="input-line"></div>
+              </div>
+              <span class="error-msg" id="fullNameError"></span>
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address <span class="req-star">*</span></label>
+              <div class="input-wrap">
+                <input type="email" id="email" name="email" placeholder="john@company.com" autocomplete="off"/>
+                <div class="input-line"></div>
+              </div>
+              <span class="error-msg" id="emailError"></span>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="phone">Phone Number <span class="req-star">*</span></label>
+              <div class="input-wrap">
+                <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" autocomplete="off"/>
+                <div class="input-line"></div>
+              </div>
+              <span class="error-msg" id="phoneError"></span>
+            </div>
+            <div class="form-group">
+              <label for="company">Company / Organization</label>
+              <div class="input-wrap">
+                <input type="text" id="company" name="company" placeholder="Your Company Ltd." autocomplete="off"/>
+                <div class="input-line"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="eventType">Event Type <span class="req-star">*</span></label>
+              <div class="input-wrap select-wrap">
+                <select id="eventType" name="eventType">
+                  <option value="">— Select Event Type —</option>
+                  <option value="corporate">Corporate Event</option>
+                  <option value="exhibition">Exhibition / Expo</option>
+                  <option value="conference">Conference / Summit</option>
+                  <option value="activation">Brand Activation</option>
+                  <option value="launch">Product Launch</option>
+                  <option value="award">Award Ceremony</option>
+                  <option value="other">Other</option>
+                </select>
+                <div class="input-line"></div>
+              </div>
+              <span class="error-msg" id="eventTypeError"></span>
+            </div>
+            <div class="form-group">
+              <label for="eventDate">Preferred Event Date <span class="req-star">*</span></label>
+              <div class="input-wrap">
+                <input type="date" id="eventDate" name="eventDate"/>
+                <div class="input-line"></div>
+              </div>
+              <span class="error-msg" id="eventDateError"></span>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="attendees">Expected Attendees <span class="req-star">*</span></label>
+              <div class="input-wrap select-wrap">
+                <select id="attendees" name="attendees">
+                  <option value="">— Select Range —</option>
+                  <option value="1-50">1 – 50</option>
+                  <option value="50-200">50 – 200</option>
+                  <option value="200-500">200 – 500</option>
+                  <option value="500-1000">500 – 1,000</option>
+                  <option value="1000+">1,000+</option>
+                </select>
+                <div class="input-line"></div>
+              </div>
+              <span class="error-msg" id="attendeesError"></span>
+            </div>
+            <div class="form-group">
+              <label for="city">Event City <span class="req-star">*</span></label>
+              <div class="input-wrap">
+                <input type="text" id="city" name="city" placeholder="Mumbai, Delhi, Pune..." autocomplete="off"/>
+                <div class="input-line"></div>
+              </div>
+              <span class="error-msg" id="cityError"></span>
+            </div>
+          </div>
+
+          <div class="form-group full-width">
+            <label for="message">Tell Us About Your Event <span class="req-star">*</span></label>
+            <div class="input-wrap textarea-wrap">
+              <textarea id="message" name="message" rows="5" placeholder="Describe your event requirements, theme, special requests, or anything else we should know..."></textarea>
+              <div class="input-line"></div>
+              <div class="char-counter"><span id="charCount">0</span> / 500</div>
+            </div>
+            <span class="error-msg" id="messageError"></span>
+          </div>
+
+          <div class="form-group full-width">
+            <label class="checkbox-label">
+              <input type="checkbox" id="agreeTerms" name="agreeTerms"/>
+              <span class="checkbox-custom"></span>
+              I agree to the <a href="#" class="form-link">Terms of Service</a> and <a href="#" class="form-link">Privacy Policy</a> <span class="req-star">*</span>
+            </label>
+            <span class="error-msg" id="agreeTermsError"></span>
+          </div>
+
+          <div class="form-submit">
+            <button type="submit" class="btn-submit" id="submitBtn">
+              <span class="btn-text">Submit Registration</span>
+              <span class="btn-loading" style="display:none;">
+                <span class="spinner"></span> Sending...
+              </span>
+              <span class="btn-arrow-icon">→</span>
+            </button>
+            <p class="form-note">🔒 Your data is safe. We never share your information.</p>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo"><span class="brand-icon">✦</span> LUMINAE EVENTS</div>
+        <p>Premium event management solutions tailored to your vision.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <a href="index.html">Home</a>
+        <a href="events.html">Events</a>
+        <a href="register.html">Register</a>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact</h4>
+        <p>📍 Pune, Maharashtra, India</p>
+        <p>📞 +91 98765 43210</p>
+        <p>✉️ hello@luminaeevents.com</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 Luminae Events. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/validation.js"></script>
+</body>
+</html>

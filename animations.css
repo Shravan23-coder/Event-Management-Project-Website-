@@ -1,0 +1,220 @@
+/* ============================================
+   LUMINAE EVENTS — ANIMATIONS
+   animations.css
+============================================ */
+
+/* ---- SCROLL-TRIGGERED FADE IN ---- */
+.fade-in {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.4,0,0.2,1),
+              transform 0.8s cubic-bezier(0.4,0,0.2,1);
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fade-in.delay-sm { transition-delay: 0.1s; }
+.fade-in.delay-md { transition-delay: 0.25s; }
+.fade-in.delay-lg { transition-delay: 0.4s; }
+.fade-in.delay-xl { transition-delay: 0.55s; }
+
+/* ---- SLIDE IN LEFT ---- */
+.slide-in-left {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.slide-in-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ---- SLIDE IN RIGHT ---- */
+.slide-in-right {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.slide-in-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ---- SCALE IN ---- */
+.scale-in {
+  opacity: 0;
+  transform: scale(0.88);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.175,0.885,0.32,1.2);
+}
+.scale-in.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ---- STAGGER CHILDREN ---- */
+.stagger-children > * {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.stagger-children.visible > *:nth-child(1) { opacity:1; transform:none; transition-delay:0s; }
+.stagger-children.visible > *:nth-child(2) { opacity:1; transform:none; transition-delay:0.1s; }
+.stagger-children.visible > *:nth-child(3) { opacity:1; transform:none; transition-delay:0.2s; }
+.stagger-children.visible > *:nth-child(4) { opacity:1; transform:none; transition-delay:0.3s; }
+.stagger-children.visible > *:nth-child(5) { opacity:1; transform:none; transition-delay:0.4s; }
+.stagger-children.visible > *:nth-child(6) { opacity:1; transform:none; transition-delay:0.5s; }
+
+/* ---- GLOW PULSE ---- */
+@keyframes glowPulse {
+  0%,100% { box-shadow: 0 0 20px rgba(201,168,76,0.2); }
+  50%      { box-shadow: 0 0 40px rgba(201,168,76,0.5); }
+}
+.glow-pulse { animation: glowPulse 3s ease-in-out infinite; }
+
+/* ---- SHIMMER ---- */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+.shimmer-text {
+  background: linear-gradient(90deg, var(--gold-dk) 0%, var(--gold-lt) 50%, var(--gold-dk) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s linear infinite;
+}
+
+/* ---- BORDER GLOW ---- */
+@keyframes borderGlow {
+  0%,100% { border-color: rgba(201,168,76,0.2); }
+  50%      { border-color: rgba(201,168,76,0.6); }
+}
+.border-glow { animation: borderGlow 3s ease-in-out infinite; }
+
+/* ---- TYPEWRITER (for hero subtitle if needed) ---- */
+@keyframes blink {
+  0%,100% { border-right-color: var(--gold); }
+  50%      { border-right-color: transparent; }
+}
+.typewriter {
+  overflow: hidden;
+  border-right: 2px solid var(--gold);
+  white-space: nowrap;
+  animation: blink 1s step-end infinite;
+}
+
+/* ---- PARTICLE FLOAT ---- */
+@keyframes particleFloat {
+  0%   { transform: translateY(0px)   rotate(0deg); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { transform: translateY(-80px) rotate(360deg); opacity: 0; }
+}
+.particle {
+  position: absolute;
+  width: 4px; height: 4px;
+  background: var(--gold);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: particleFloat 4s ease-in-out infinite;
+}
+
+/* ---- CARD HOVER TILT ---- */
+.tilt-card {
+  transition: transform 0.3s ease;
+  transform-style: preserve-3d;
+}
+
+/* ---- UNDERLINE DRAW ---- */
+.underline-draw {
+  position: relative;
+  display: inline-block;
+}
+.underline-draw::after {
+  content: '';
+  position: absolute;
+  left: 0; bottom: -4px;
+  width: 0; height: 2px;
+  background: var(--gold);
+  transition: width 0.4s ease;
+}
+.underline-draw:hover::after { width: 100%; }
+
+/* ---- NUMBER COUNTER ANIMATION ---- */
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.counter-visible { animation: countUp 0.5s ease forwards; }
+
+/* ---- PAGE TRANSITION ---- */
+.page-transition {
+  position: fixed; inset: 0;
+  background: var(--gold);
+  z-index: 99998;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+.page-transition.in  { animation: transitionIn  0.5s ease forwards; }
+.page-transition.out { animation: transitionOut 0.5s ease forwards; }
+@keyframes transitionIn  { to { transform: scaleX(1); } }
+@keyframes transitionOut { from { transform-origin: right; transform: scaleX(1); } to { transform-origin: right; transform: scaleX(0); } }
+
+/* ---- RIPPLE BUTTON EFFECT ---- */
+.ripple {
+  position: relative; overflow: hidden;
+}
+.ripple::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.3);
+  width: 0; height: 0;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  transition: width 0.5s ease, height 0.5s ease, opacity 0.5s ease;
+  opacity: 1;
+}
+.ripple:active::after {
+  width: 300px; height: 300px;
+  opacity: 0;
+}
+
+/* ---- FLOATING BADGES ---- */
+@keyframes floatBadge {
+  0%,100% { transform: translateY(0) rotate(-2deg); }
+  50%      { transform: translateY(-10px) rotate(2deg); }
+}
+.float-badge { animation: floatBadge 5s ease-in-out infinite; }
+
+/* ---- PROGRESS BAR ---- */
+@keyframes progressFill {
+  from { width: 0%; }
+  to   { width: var(--progress-target, 75%); }
+}
+.progress-bar {
+  height: 3px; background: var(--surface-2); border-radius: 999px; overflow: hidden;
+}
+.progress-fill {
+  height: 100%; background: var(--gold); border-radius: 999px;
+  width: 0%;
+  transition: width 1.5s cubic-bezier(0.4,0,0.2,1);
+}
+.progress-fill.animated { animation: progressFill 1.5s ease forwards; }
+
+/* ---- GRADIENT TEXT ANIMATION ---- */
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%;   }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%;   }
+}
+.animated-gradient-text {
+  background: linear-gradient(-45deg, var(--gold), var(--gold-lt), var(--accent-lt), var(--gold));
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientShift 5s ease infinite;
+}

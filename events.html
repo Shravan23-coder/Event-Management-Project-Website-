@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Events — LUMINAE Events</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursorFollower"></div>
+
+  <nav class="navbar" id="navbar">
+    <div class="nav-brand">
+      <span class="brand-icon">✦</span>
+      <span class="brand-name">LUMINAE</span>
+      <span class="brand-sub">EVENTS</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="events.html" class="nav-link active">Events</a></li>
+      <li><a href="register.html" class="nav-link">Register</a></li>
+      <li><a href="index.html#about" class="nav-link">About</a></li>
+      <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+    </ul>
+    <a href="register.html" class="nav-cta">Book An Event</a>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="page-hero-bg">
+      <div class="hero-orb orb-1"></div>
+      <div class="hero-orb orb-2"></div>
+    </div>
+    <div class="page-hero-content">
+      <p class="section-eyebrow reveal-up">Our Portfolio</p>
+      <h1 class="page-hero-title reveal-up delay-1">Upcoming <em>&amp; Featured</em> Events</h1>
+      <p class="page-hero-desc reveal-up delay-2">Discover our curated calendar of corporate events, exhibitions, conferences, and activations.</p>
+    </div>
+  </section>
+
+  <!-- FILTER BAR -->
+  <section class="filter-section">
+    <div class="container">
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">All Events</button>
+        <button class="filter-btn" data-filter="corporate">Corporate</button>
+        <button class="filter-btn" data-filter="exhibition">Exhibition</button>
+        <button class="filter-btn" data-filter="conference">Conference</button>
+        <button class="filter-btn" data-filter="activation">Activation</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- EVENTS GRID -->
+  <section class="events-section section">
+    <div class="container">
+      <div class="events-grid" id="eventsGrid">
+
+        <div class="event-card" data-category="corporate">
+          <div class="event-card-img corporate-bg">
+            <div class="event-category-tag">Corporate</div>
+            <div class="event-overlay">
+              <a href="register.html" class="event-register-btn">Register Now</a>
+            </div>
+          </div>
+          <div class="event-card-body">
+            <div class="event-meta">
+              <span class="event-date">📅 April 15, 2024</span>
+              <span class="event-location">📍 Pune</span>
+            </div>
+            <h3 class="event-title">Tech Leadership Summit 2024</h3>
+            <p class="event-desc">A premier gathering of tech executives, founders, and innovators from across the industry to discuss the future of technology and leadership.</p>
+            <div class="event-footer">
+              <div class="event-seats"><span class="seats-dot"></span> 45 seats left</div>
+              <a href="register.html" class="event-cta">Register <span>→</span></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="event-card featured-event" data-category="exhibition">
+          <div class="event-card-img exhibition-bg">
+            <div class="event-category-tag">Exhibition</div>
+            <div class="event-badge-featured">Featured</div>
+            <div class="event-overlay">
+              <a href="register.html" class="event-register-btn">Register Now</a>
+            </div>
+          </div>
+          <div class="event-card-body">
+            <div class="event-meta">
+              <span class="event-date">📅 April 22–24, 2024</span>
+              <span class="event-location">📍 Mumbai</span>
+            </div>
+            <h3 class="event-title">India Manufacturing Expo 2024</h3>
+            <p class="event-desc">India's largest manufacturing and industrial exhibition bringing together 500+ exhibitors and 50,000+ visitors from across the globe.</p>
+            <div class="event-footer">
+              <div class="event-seats"><span class="seats-dot urgent"></span> 12 stalls left</div>
+              <a href="register.html" class="event-cta">Register <span>→</span></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="event-card" data-category="conference">
+          <div class="event-card-img conference-bg">
+            <div class="event-category-tag">Conference</div>
+            <div class="event-overlay">
+              <a href="register.html" class="event-register-btn">Register Now</a>
+            </div>
+          </div>
+          <div class="event-card-body">
+            <div class="event-meta">
+              <span class="event-date">📅 May 3, 2024</span>
+              <span class="event-location">📍 Bangalore</span>
+            </div>
+            <h3 class="event-title">Future of Finance Conference</h3>
+            <p class="event-desc">Bringing together CFOs, fintech founders, and banking leaders to explore trends shaping the financial landscape in 2024 and beyond.</p>
+            <div class="event-footer">
+              <div class="event-seats"><span class="seats-dot"></span> 80 seats left</div>
+              <a href="register.html" class="event-cta">Register <span>→</span></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="event-card" data-category="activation">
+          <div class="event-card-img activation-bg">
+            <div class="event-category-tag">Activation</div>
+            <div class="event-overlay">
+              <a href="register.html" class="event-register-btn">Register Now</a>
+            </div>
+          </div>
+          <div class="event-card-body">
+            <div class="event-meta">
+              <span class="event-date">📅 May 18, 2024</span>
+              <span class="event-location">📍 Delhi NCR</span>
+            </div>
+            <h3 class="event-title">Brand Fiesta — Consumer Activation</h3>
+            <p class="event-desc">A high-energy BTL activation experience designed to create direct consumer touchpoints, sample distribution, and viral brand engagement.</p>
+            <div class="event-footer">
+              <div class="event-seats"><span class="seats-dot"></span> Open Registration</div>
+              <a href="register.html" class="event-cta">Register <span>→</span></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="event-card" data-category="corporate">
+          <div class="event-card-img gala-bg">
+            <div class="event-category-tag">Corporate</div>
+            <div class="event-overlay">
+              <a href="register.html" class="event-register-btn">Register Now</a>
+            </div>
+          </div>
+          <div class="event-card-body">
+            <div class="event-meta">
+              <span class="event-date">📅 June 5, 2024</span>
+              <span class="event-location">📍 Hyderabad</span>
+            </div>
+            <h3 class="event-title">Annual Awards Gala Night 2024</h3>
+            <p class="event-desc">A prestigious black-tie awards ceremony celebrating outstanding corporate achievements, innovation, and excellence across industries.</p>
+            <div class="event-footer">
+              <div class="event-seats"><span class="seats-dot"></span> 60 seats left</div>
+              <a href="register.html" class="event-cta">Register <span>→</span></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="event-card" data-category="conference">
+          <div class="event-card-img health-bg">
+            <div class="event-category-tag">Conference</div>
+            <div class="event-overlay">
+              <a href="register.html" class="event-register-btn">Register Now</a>
+            </div>
+          </div>
+          <div class="event-card-body">
+            <div class="event-meta">
+              <span class="event-date">📅 June 20, 2024</span>
+              <span class="event-location">📍 Chennai</span>
+            </div>
+            <h3 class="event-title">Healthcare Innovation Summit</h3>
+            <p class="event-desc">A confluence of healthcare professionals, pharma leaders, and medtech innovators exploring the next frontier of healthcare delivery.</p>
+            <div class="event-footer">
+              <div class="event-seats"><span class="seats-dot"></span> 100 seats left</div>
+              <a href="register.html" class="event-cta">Register <span>→</span></a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="events-empty" id="eventsEmpty" style="display:none;">
+        <div class="empty-icon">🔍</div>
+        <p>No events found for this category.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- MINI CTA -->
+  <section class="mini-cta">
+    <div class="container">
+      <div class="mini-cta-inner">
+        <div>
+          <h3>Don't see your event type?</h3>
+          <p>We handle custom events of any scale. Let's talk.</p>
+        </div>
+        <a href="register.html" class="btn-primary">Get a Custom Quote <span class="btn-arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo"><span class="brand-icon">✦</span> LUMINAE EVENTS</div>
+        <p>Premium event management solutions tailored to your vision.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <a href="index.html">Home</a>
+        <a href="events.html">Events</a>
+        <a href="register.html">Register</a>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact</h4>
+        <p>📍 Pune, Maharashtra, India</p>
+        <p>📞 +91 98765 43210</p>
+        <p>✉️ hello@luminaeevents.com</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 Luminae Events. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/events.js"></script>
+</body>
+</html>
