@@ -1,6 +1,8 @@
 # LUMINAE Events Portal — Setup Guide
 Complete step-by-step instructions from folder setup to database.
-
+## MANDATORY PR CHANGES MADE..........
+## ✨ Update
+Added minor UI improvements and enhancements.
 ---
 
 ## PROJECT STRUCTURE
